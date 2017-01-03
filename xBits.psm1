@@ -12,9 +12,11 @@ Enum Ensure {
 [DscResource()]
 Class xBitTransfer {
 
+    [Parameter (Mandatory = $True)]
     [DSCProperty(Key)]
     [String]$Url
 
+    [Parameter (Mandatory = $True)]
     [DSCProperty()]
     [String]$FileName
     
@@ -29,13 +31,14 @@ Class xBitTransfer {
     [PSCredential]$Credential
 
     [DSCProperty()]
-    [String]$Description
+    [String]$Description = $FileName
 
+    [Parameter (Mandatory = $True)]
     [DSCProperty()]
     [String]$Destination
 
     [DSCProperty()]
-    [String]$DisplayName
+    [String]$DisplayName = $FileName
 
     [DscProperty()]
     [ValidateSet ( 'High','Foreground','Normal','Low' ) ]
@@ -105,8 +108,6 @@ Class xBitTransfer {
                 -Description $This.Description `
                 -DisplayName $This.DisplayName `
                 -Priority $This.Priority 
-        }
-            
-               
+        }              
     }
 }
