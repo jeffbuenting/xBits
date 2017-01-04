@@ -4,11 +4,11 @@ Powershell DSC Resource for Bits
 
 The **xBits** module contians the following resources:
 
-- **xBitTransfer**: Copies a file using Bits.
+- **xBitsTransfer**: Copies a file using Bits.
 
 ## Resources
 
-###XbitTransfer 
+###XbitsTransfer 
 Most of this information can be found on the Start-BitsTransfer Site ( https://technet.microsoft.com/en-us/library/dd819420.aspx
    )
    
