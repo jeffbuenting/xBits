@@ -8,7 +8,7 @@ Enum Ensure {
 }
 
 [DscResource()]
-Class xBitTransfer {
+Class xBitsTransfer {
 
     # ----- Path / web address to the file
     [DSCProperty(Mandatory)]
@@ -66,7 +66,7 @@ Class xBitTransfer {
     }
 
     # ----- Returns info about the file at the destination if it exists.
-    [xBitTransfer]Get() 
+    [xBitsTransfer]Get() 
     {
         $present = Test-Path -Path "$($This.Destination)\$($This.fileName)"
 
