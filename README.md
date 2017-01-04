@@ -16,7 +16,7 @@ Most of this information can be found on the Start-BitsTransfer Site ( https://t
 - **`[String]` FileName** (_Key_):  Name of the file that combines with URL for the full path to the source.
 - **`[Bool]` Asynchronous** (_Write_):  Allows the BITS transfer job to be created and then processed in the background. The command prompt reappears immediately after the BITS transfer job is created. The returned BitsJob object can be used to monitor status and progress.  Default = $False
 - **`[String]` Authentication** (_Write_) :  Specifies the authentication mechanism to be used at the server. Possible values are:
--- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.
+  -- Basic: Basic is a scheme in which the user name and password are sent in clear text to the server or proxy.  
 -- Digest: Digest is a challenge-response scheme that uses a server-specified data string for the challenge.
 -- NTLM: NTLM is a challenge-response scheme that uses the credentials of the user for authentication in a Windows-based network environment.
 -- Negotiate (the default): Negotiate is a challenge-response scheme that negotiates with the server or proxy to determine which scheme to use for authentication. For example, this parameter value allows negotiation to determine whether the Kerberos protocol or NTLM is used.
