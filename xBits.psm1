@@ -104,32 +104,42 @@ Class xBitsTransfer {
         Write-Verbose "FileName : $($This.FileName)"
         Write-Verbose "URL/FileName : $($This.Url)/$($This.FileName)"
 
-        
-        if ( $This.Credential ) 
+        if ( $This.Ensure -eq 'Present' ) 
         {
-            Write-Verbose "Downloading via Bits with Credential"
-            Start-BitsTransfer -source "$($This.Url)/$($This.FileName)" `
-                -Destination $This.Destination `
-                -Asynchronous:$This.Asynchronous `
-                -Authentication $This.Authentication `
-                -Credential $This.Credential `
-                -Description $This.Description `
-                -DisplayName $This.DisplayName `
-                -Priority $This.Priority `
-                -ErrorAction Stop `
-                -Verbose
+            if ( $This.Credential ) 
+            {
+                Write-Verbose "Downloading via Bits with Credential"
+                Start-BitsTransfer -source "$($This.Url)/$($This.FileName)" `
+                    -Destination $This.Destination `
+                    -Asynchronous:$This.Asynchronous `
+                    -Authentication $This.Authentication `
+                    -Credential $This.Credential `
+                    -Description $This.Description `
+                    -DisplayName $This.DisplayName `
+                    -Priority $This.Priority `
+                    -ErrorAction Stop `
+                    -Verbose
+            }
+            Else 
+            {
+                Write-Verbose "Downloading via Bits"
+                Start-BitsTransfer -Source "$($This.Url)/$($This.FileName)" `
+                    -Destination $This.Destination `
+                    -Asynchronous:$This.Asynchronous `
+                    -Authentication $This.Authentication `
+                    -Description $This.Description `
+                    -DisplayName $This.DisplayName `
+                    -Priority $This.Priority `
+                    -ErrorAction Stop
+            }
         }
         Else 
         {
-            Write-Verbose "Downloading via Bits"
-            Start-BitsTransfer -Source "$($This.Url)/$($This.FileName)" `
-                -Destination $This.Destination `
-                -Asynchronous:$This.Asynchronous `
-                -Authentication $This.Authentication `
-                -Description $This.Description `
-                -DisplayName $This.DisplayName `
-                -Priority $This.Priority `
-                -ErrorAction Stop
-        }  
+            Write-Verbose "Removing File if it exists $($This.Url)/$($This.Filename)"
+            if ( Test-Path -Path $($This.Url)/$($This.Filename) )
+            {
+                Remove-Item -Path $($This.Url)/$($This.Filename) -Force
+            }
+        }
     }
 }
