@@ -2,6 +2,10 @@
 
 Powershell DSC Resource for Bits
 
+## Installation
+
+To manually install the module, download the source code and unzip the contents of the 'xNETFrameWork' directory to the '$env:ProgramFiles\WindowsPowerShell\Modules folder'.
+
 The **xBits** module contians the following resources:
 
 - **xBitsTransfer**: Copies a file using Bits.
